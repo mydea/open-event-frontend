@@ -31,7 +31,11 @@ module.exports = function(environment) {
     },
 
     APP: {
-      apiHost      : process.env.API_HOST || (environment === 'production' ? 'https://api.eventyay.com' : 'https://open-event.dokku.fossasia.org'),
+      apiHost:
+        process.env.API_HOST
+        || (environment === 'production'
+          ? 'https://api.eventyay.com'
+          : 'https://open-event.dokku.fossasia.org'),
       apiNamespace : process.env.API_NAMESPACE || 'v1',
       version      : process.env.npm_package_version
     },
@@ -47,11 +51,36 @@ module.exports = function(environment) {
     },
 
     sentry: {
-      dsn              : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
-      debug            : !!process.env.SENTRY_DSN,
-      development      : !process.env.SENTRY_DSN,
-      release          : (process.env.SENTRY_PROJECT_NAME || 'eventyay-frontend') + '@' + process.env.npm_package_version,
-      tracesSampleRate : process.env.SENTRY_TRACE_SAMPLE_RATE || 0.1
+      dsn         : process.env.SENTRY_DSN || 'https://dummy@getsentry.com/dummy',
+      debug       : !!process.env.SENTRY_DSN,
+      development : !process.env.SENTRY_DSN,
+      release     :
+        (process.env.SENTRY_PROJECT_NAME || 'eventyay-frontend')
+        + '@'
+        + process.env.npm_package_version,
+      tracesSampleRate: process.env.SENTRY_TRACE_SAMPLE_RATE || 0.1
+    },
+
+    'ember-l10n': {
+      locales: [
+        'bn',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'hi',
+        'id',
+        'ja',
+        'pl',
+        'ru',
+        'th',
+        'vi',
+        'zh_Hans',
+        'zh_Hant',
+        'ko'
+      ],
+      autoInitialize : false,
+      jsonPath       : '/assets/locales'
     },
 
     emberFullCalendar: {
@@ -71,7 +100,11 @@ module.exports = function(environment) {
 
     torii: {},
 
-    webAppGenerator: process.env.WEB_APP_GENERATOR_HOST || (environment === 'production' ? 'https://open-event-wsgen.herokuapp.com' : 'https://open-event-wsgen-dev.herokuapp.com')
+    webAppGenerator:
+      process.env.WEB_APP_GENERATOR_HOST
+      || (environment === 'production'
+        ? 'https://open-event-wsgen.herokuapp.com'
+        : 'https://open-event-wsgen-dev.herokuapp.com')
   };
 
   if (environment === 'production') {

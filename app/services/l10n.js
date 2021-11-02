@@ -35,8 +35,6 @@ export default class L10nService extends L10n {
   availableLocales;
 
   localStorageKey = 'current_locale';
-  autoInitialize = false;
-  jsonPath = '/assets/locales';
 
   switchLanguage(locale, skipRefresh) {
     if (this.locale === locale) {return}
